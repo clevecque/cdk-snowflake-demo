@@ -25,21 +25,22 @@ try:
 
     country_list = ['Australia', 'USA', 'France', 'India', 'UK', 'Germany', 'China', 'Brazil', 'Indonesia']
     device_list = ['mobile', 'desktop', 'tablet']
+    event_list = ['click', 'view']
     for i in range(0,100):
         for i in range (0,5):
             user_id = random.randint(100,999)
-            transaction_id = random.randint(100000,99999999)
-            transaction_amount = str(random.randint(1,10000))
-            transaction_time = datetime.datetime.utcnow().isoformat()
-            transaction_country = random.choice(country_list)
-            transaction_device = random.choice(device_list)
+            id = random.randint(100000,99999999)
+            time = datetime.datetime.utcnow().isoformat()
+            country = random.choice(country_list)
+            device = random.choice(device_list)
+            event_type = random.choice(event_list)
             event = {
                 'user_id': user_id,
-                'transaction_id': transaction_id,
-                'transaction_amount': transaction_amount,
-                'transaction_time': transaction_time,
-                'transaction_country': transaction_country,
-                'transaction_device': transaction_device
+                'id': id,
+                'timestamp': time,
+                'country': country,
+                'device': device,
+                'event_type': event_type
             }
             output += str(event)
 
