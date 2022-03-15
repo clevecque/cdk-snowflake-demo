@@ -123,16 +123,16 @@ export class CdkSnowflakeDemoStack extends Stack {
             's3:ListBucket'
           ],
           resources: [
-            'arn:aws:s3:::cdk-snowflake-demo-bucket/data/'
+            'arn:aws:s3:::cdk-snowflake-demo-bucket',
+            'arn:aws:s3:::cdk-snowflake-demo-bucket/*'
           ],
           effect: Effect.ALLOW,
-        })
-      ]
+        }),
+      ] // don't forget to add KMS permissions if the bucket is encrypted
     });
 
     new Role(this, 'snowflakeRole', {
       roleName: 'snowflake-role',
-
       assumedBy: new ArnPrincipal('arn:aws:iam::486855810640:user/f9ts-s-aust3232'),
       managedPolicies: [ snowflakePolicy ]
     });

@@ -26,5 +26,5 @@ CREATE OR REPLACE task store.task_clicks
       raw_data:country::varchar,
       raw_data:device::varchar
     FROM store.stream_clicks
-    WHERE raw_data:detail:eventType::varchar = 'click'
+    WHERE raw_data:event_type::varchar = 'click'
 ;

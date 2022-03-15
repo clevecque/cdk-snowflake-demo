@@ -26,5 +26,5 @@ CREATE OR REPLACE task store.task_views
       raw_data:country::varchar,
       raw_data:device::varchar
     FROM store.stream_views
-    WHERE raw_data:detail:eventType::varchar = 'view'
+    WHERE raw_data:event_type::varchar = 'view'
 ;
