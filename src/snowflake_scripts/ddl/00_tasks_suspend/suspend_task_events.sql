@@ -1,0 +1,1 @@
+ALTER TASK IF EXISTS store.task_events SUSPEND;

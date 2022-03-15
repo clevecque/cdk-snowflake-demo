@@ -37,11 +37,11 @@ def execute_sql(sql, return_results=False):
 
 
 if __name__ =="__main__":
-  main_dir = 'ddl/'
+  main_dir = 'src/snowflake_scripts/ddl/'
   dirnames=sorted(os.listdir(main_dir))
   for dir in dirnames:
     dirname = os.path.join(main_dir, dir)
-    for filename in os.listdir(dirname):
+    for filename in sorted(os.listdir(dirname)):
       with open(os.path.join(dirname, filename), "r") as f:
         print("Deploying {}".format(filename))
         execute_sql(sql=f.read(),return_results=False)

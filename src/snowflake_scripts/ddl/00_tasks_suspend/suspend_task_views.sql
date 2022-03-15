@@ -1,1 +1,0 @@
-ALTER TASK store.task_views SUSPEND;
