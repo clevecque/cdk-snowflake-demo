@@ -8,7 +8,7 @@ CREATE OR REPLACE task store.task_views_hourly
         user_id
         , date_trunc('hour', timestamp)    AS date
         , count(*)                         AS cnt_views
-      FROM analytics.stream_views_hourly
+      FROM store.stream_views_hourly
       GROUP BY date
         , user_id
         , date

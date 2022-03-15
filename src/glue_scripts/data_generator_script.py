@@ -27,22 +27,21 @@ try:
     device_list = ['mobile', 'desktop', 'tablet']
     event_list = ['click', 'view']
     for i in range(0,100):
-        for i in range (0,5):
-            user_id = random.randint(100,999)
-            id = random.randint(100000,99999999)
-            time = datetime.datetime.utcnow().isoformat()
-            country = random.choice(country_list)
-            device = random.choice(device_list)
-            event_type = random.choice(event_list)
-            event = {
-                'user_id': user_id,
-                'id': id,
-                'timestamp': time,
-                'country': country,
-                'device': device,
-                'event_type': event_type
-            }
-            output += str(event)
+        user_id = random.randint(100,999)
+        id = random.randint(100000,99999999)
+        time = datetime.datetime.utcnow().isoformat()
+        country = random.choice(country_list)
+        device = random.choice(device_list)
+        event_type = random.choice(event_list)
+        event = {
+            'user_id': user_id,
+            'id': id,
+            'timestamp': time,
+            'country': country,
+            'device': device,
+            'event_type': event_type
+        }
+        output += str(event)
 
     client.put_object(
         Body=output,

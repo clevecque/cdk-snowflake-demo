@@ -4,7 +4,7 @@ CREATE OR REPLACE task store.task_events
   WHEN SYSTEM$STREAM_HAS_DATA('store.stream_events')
   AS 
     INSERT FIRST 
-    WHEN raw_data:event_type::varchar = 'click'
+    WHEN event_type = 'click'
     THEN INTO store.clicks (
       _load_time,
       _file_name,
@@ -58,6 +58,7 @@ CREATE OR REPLACE task store.task_events
       raw_data:user_id::varchar       AS user_id,
       raw_data:timestamp::timestamp   AS timestamp,
       raw_data:country::varchar       AS country,
-      raw_data:device::varchar        AS device
+      raw_data:device::varchar        AS device,
+      raw_data:event_type::varchar    AS event_type
     FROM store.stream_events
 ;
