@@ -19,14 +19,20 @@ You will need an AWS account with an Access Key. You can generate the latter in 
 You will need a Snowflake account. You can get a trial account with up to $400 free credit.
 
 1. Create your database in the Snowflake UX.
-
-
+2. Create a `.env` file in your root on the following template
+```
+SF_USER=
+SF_PWD=
+SF_ACCOUNT=
+SF_DATABASE=
+SF_WAREHOUSE=
+```
+Your `SF_ACCOUNT` value should be the one in the Snowflake URL : `https:/<SF_ACCOUNT>.snowflakecomputing.com`
+3. Install `requirements.txt` in repo with `pip3 install -r requirements.txt`
+4. Deploy Snowflake objects with `python3 src/snowflake_scripts/deploy_snowflake_objects.py`
 
 
 ## Default useful commands
-  * `npm run build`   compile typescript to js
-  * `npm run watch`   watch for changes and compile
-  * `npm run test`    perform the jest unit tests
   * `cdk deploy`      deploy this stack to your default AWS account/region
   * `cdk diff`        compare deployed stack with current state
   * `cdk synth`       emits the synthesized CloudFormation template
