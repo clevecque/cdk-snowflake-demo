@@ -28,8 +28,24 @@ SF_DATABASE=
 SF_WAREHOUSE=
 ```
 Your `SF_ACCOUNT` value should be the one in the Snowflake URL : `https:/<SF_ACCOUNT>.snowflakecomputing.com`
+
 3. Install `requirements.txt` in repo with `pip3 install -r requirements.txt`
 4. Deploy Snowflake objects with `python3 src/snowflake_scripts/deploy_snowflake_objects.py`
+
+## How to monitor Snowflake objects
+
+1. Monitor the pipe: can give the status, hopefully `RUNNING`
+```
+SELECT SYSTEM$PIPE_STATUS('<NAME_OF_YOUR_PIPE>');
+```
+2. Monitor the tasks: make sure you are in the correct schema
+```
+SELECT *
+  FROM TABLE(information_schema.task_history(
+    SCHEDULED_TIME_RANGE_START=>DATEADD('hour',-1,current_timestamp()),
+    RESULT_LIMIT => 10,
+    TASK_NAME=>'<NAME_OF_YOUR_TASK>'));
+``` 
 
 
 ## Default useful commands
